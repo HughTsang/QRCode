@@ -10,12 +10,14 @@
 		EC7FDDC51F4186B8007F472C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7FDDC31F4186B8007F472C /* Main.storyboard */; };
 		EC7FDDC71F4186B8007F472C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC7FDDC61F4186B8007F472C /* Assets.xcassets */; };
 		EC7FDDCA1F4186B8007F472C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7FDDC81F4186B8007F472C /* LaunchScreen.storyboard */; };
-		EC7FDDE71F4186CD007F472C /* BuildQRCodeVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7FDDD41F4186CD007F472C /* BuildQRCodeVc.swift */; };
 		EC7FDDE81F4186CD007F472C /* DistinguishQRCodeVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7FDDD91F4186CD007F472C /* DistinguishQRCodeVc.swift */; };
 		EC7FDDE91F4186CD007F472C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7FDDDE1F4186CD007F472C /* AppDelegate.swift */; };
 		EC7FDDEA1F4186CD007F472C /* CommonKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7FDDDF1F4186CD007F472C /* CommonKeys.swift */; };
 		EC7FDDEC1F4186CD007F472C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7FDDE11F4186CD007F472C /* ViewController.swift */; };
 		EC7FDDED1F4186CD007F472C /* ScanningQRCodeVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7FDDE41F4186CD007F472C /* ScanningQRCodeVc.swift */; };
+		EC8F697C1F456C100039111D /* HZQRCodeTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8F69781F456C100039111D /* HZQRCodeTool.swift */; };
+		EC8F69AB1F4573710039111D /* HZQRCodeResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EC8F69AA1F4570350039111D /* HZQRCodeResource.bundle */; };
+		ECCBE6471F428E7B00A21C98 /* GeneratorQRCodeVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCBE6461F428E7A00A21C98 /* GeneratorQRCodeVc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,13 +25,15 @@
 		EC7FDDC41F4186B8007F472C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EC7FDDC61F4186B8007F472C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC7FDDC91F4186B8007F472C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		EC7FDDD41F4186CD007F472C /* BuildQRCodeVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildQRCodeVc.swift; sourceTree = "<group>"; };
 		EC7FDDD91F4186CD007F472C /* DistinguishQRCodeVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistinguishQRCodeVc.swift; sourceTree = "<group>"; };
 		EC7FDDDE1F4186CD007F472C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC7FDDDF1F4186CD007F472C /* CommonKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonKeys.swift; sourceTree = "<group>"; };
 		EC7FDDE01F4186CD007F472C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC7FDDE11F4186CD007F472C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EC7FDDE41F4186CD007F472C /* ScanningQRCodeVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanningQRCodeVc.swift; sourceTree = "<group>"; };
+		EC8F69781F456C100039111D /* HZQRCodeTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HZQRCodeTool.swift; sourceTree = "<group>"; };
+		EC8F69AA1F4570350039111D /* HZQRCodeResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HZQRCodeResource.bundle; sourceTree = "<group>"; };
+		ECCBE6461F428E7A00A21C98 /* GeneratorQRCodeVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratorQRCodeVc.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 		EC7FDDBE1F4186B8007F472C /* QR-code */ = {
 			isa = PBXGroup;
 			children = (
+				EC8F69731F456C100039111D /* HZQRCodeTool */,
 				EC7FDDD11F4186CD007F472C /* Classes */,
 				EC7FDDC31F4186B8007F472C /* Main.storyboard */,
 				EC7FDDC61F4186B8007F472C /* Assets.xcassets */,
@@ -73,44 +78,12 @@
 		EC7FDDD11F4186CD007F472C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				EC7FDDDC1F4186CD007F472C /* Other */,
-				EC7FDDD21F4186CD007F472C /* Build */,
+				ECCBE6421F428E5000A21C98 /* Generator */,
 				EC7FDDE21F4186CD007F472C /* Scanning */,
 				EC7FDDD71F4186CD007F472C /* Distinguish */,
+				EC7FDDDC1F4186CD007F472C /* Other */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		EC7FDDD21F4186CD007F472C /* Build */ = {
-			isa = PBXGroup;
-			children = (
-				EC7FDDD31F4186CD007F472C /* Controller */,
-				EC7FDDD51F4186CD007F472C /* Model */,
-				EC7FDDD61F4186CD007F472C /* View */,
-			);
-			path = Build;
-			sourceTree = "<group>";
-		};
-		EC7FDDD31F4186CD007F472C /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				EC7FDDD41F4186CD007F472C /* BuildQRCodeVc.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		EC7FDDD51F4186CD007F472C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		EC7FDDD61F4186CD007F472C /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		EC7FDDD71F4186CD007F472C /* Distinguish */ = {
@@ -196,6 +169,47 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		EC8F69731F456C100039111D /* HZQRCodeTool */ = {
+			isa = PBXGroup;
+			children = (
+				EC8F69AA1F4570350039111D /* HZQRCodeResource.bundle */,
+				EC8F69781F456C100039111D /* HZQRCodeTool.swift */,
+			);
+			path = HZQRCodeTool;
+			sourceTree = "<group>";
+		};
+		ECCBE6421F428E5000A21C98 /* Generator */ = {
+			isa = PBXGroup;
+			children = (
+				ECCBE6431F428E5100A21C98 /* Controller */,
+				ECCBE6441F428E5100A21C98 /* Model */,
+				ECCBE6451F428E5100A21C98 /* View */,
+			);
+			path = Generator;
+			sourceTree = "<group>";
+		};
+		ECCBE6431F428E5100A21C98 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ECCBE6461F428E7A00A21C98 /* GeneratorQRCodeVc.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		ECCBE6441F428E5100A21C98 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ECCBE6451F428E5100A21C98 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -228,7 +242,8 @@
 				TargetAttributes = {
 					EC7FDDBB1F4186B8007F472C = {
 						CreatedOnToolsVersion = 8.3.2;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = 6MDXT5Z7P3;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -258,6 +273,7 @@
 				EC7FDDCA1F4186B8007F472C /* LaunchScreen.storyboard in Resources */,
 				EC7FDDC71F4186B8007F472C /* Assets.xcassets in Resources */,
 				EC7FDDC51F4186B8007F472C /* Main.storyboard in Resources */,
+				EC8F69AB1F4573710039111D /* HZQRCodeResource.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,12 +284,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC7FDDE71F4186CD007F472C /* BuildQRCodeVc.swift in Sources */,
 				EC7FDDED1F4186CD007F472C /* ScanningQRCodeVc.swift in Sources */,
 				EC7FDDE81F4186CD007F472C /* DistinguishQRCodeVc.swift in Sources */,
 				EC7FDDE91F4186CD007F472C /* AppDelegate.swift in Sources */,
 				EC7FDDEC1F4186CD007F472C /* ViewController.swift in Sources */,
+				ECCBE6471F428E7B00A21C98 /* GeneratorQRCodeVc.swift in Sources */,
 				EC7FDDEA1F4186CD007F472C /* CommonKeys.swift in Sources */,
+				EC8F697C1F456C100039111D /* HZQRCodeTool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,7 +413,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6MDXT5Z7P3;
 				INFOPLIST_FILE = "$(SRCROOT)/QR-code/Classes/Other/System/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xxx.QR-code";
@@ -410,7 +428,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6MDXT5Z7P3;
 				INFOPLIST_FILE = "$(SRCROOT)/QR-code/Classes/Other/System/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xxx.QR-code";
@@ -439,6 +458,7 @@
 				EC7FDDD01F4186B8007F472C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -52,9 +52,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch indexPath.row {
         case 0: // 二维码生成
-            let buildVc = BuildQRCodeVc()
-            buildVc.navigationItem.title = listArray[indexPath.row]
-            navigationController?.pushViewController(buildVc, animated: true)
+            let generatorVc = GeneratorQRCodeVc()
+            generatorVc.navigationItem.title = listArray[indexPath.row]
+            navigationController?.pushViewController(generatorVc, animated: true)
             break
         case 1: // 二维码扫描
             let scanningVc = ScanningQRCodeVc()
