@@ -2,7 +2,7 @@
 //  HZQRCodeTool.swift
 //
 //  Copyright © 2017年 zhz. All rights reserved.
-//
+//  Github地址: https://github.com/Null-Coder/QRCode
 
 import UIKit
 import AVFoundation

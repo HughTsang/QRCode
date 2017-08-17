@@ -49,7 +49,7 @@ extension GeneratorQRCodeVc {
         view.addSubview(inputTv)
         view.addSubview(buildBtn)
         
-        inputTv.text = "黄山大傻之歌~~"
+        inputTv.text = "要生成的文字~~"
     }
     
 }
