@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EC79BBFA1F46779F0058BF77 /* HZQRCodeResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EC79BBF81F46779F0058BF77 /* HZQRCodeResource.bundle */; };
-		EC79BBFB1F46779F0058BF77 /* HZQRCodeTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC79BBF91F46779F0058BF77 /* HZQRCodeTool.swift */; };
+		EC79BBFF1F4678FC0058BF77 /* HZQRCodeResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EC79BBFD1F4678FC0058BF77 /* HZQRCodeResource.bundle */; };
+		EC79BC001F4678FC0058BF77 /* HZQRCodeTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC79BBFE1F4678FC0058BF77 /* HZQRCodeTool.swift */; };
 		EC7FDDC51F4186B8007F472C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7FDDC31F4186B8007F472C /* Main.storyboard */; };
 		EC7FDDC71F4186B8007F472C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC7FDDC61F4186B8007F472C /* Assets.xcassets */; };
 		EC7FDDCA1F4186B8007F472C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7FDDC81F4186B8007F472C /* LaunchScreen.storyboard */; };
@@ -21,8 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EC79BBF81F46779F0058BF77 /* HZQRCodeResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HZQRCodeResource.bundle; sourceTree = "<group>"; };
-		EC79BBF91F46779F0058BF77 /* HZQRCodeTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HZQRCodeTool.swift; sourceTree = "<group>"; };
+		EC79BBFD1F4678FC0058BF77 /* HZQRCodeResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HZQRCodeResource.bundle; sourceTree = "<group>"; };
+		EC79BBFE1F4678FC0058BF77 /* HZQRCodeTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HZQRCodeTool.swift; sourceTree = "<group>"; };
 		EC7FDDBC1F4186B8007F472C /* QR-code.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QR-code.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC7FDDC41F4186B8007F472C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EC7FDDC61F4186B8007F472C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -47,11 +47,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EC79BBF71F46779F0058BF77 /* HZQRCodeTool */ = {
+		EC79BBFC1F4678FC0058BF77 /* HZQRCodeTool */ = {
 			isa = PBXGroup;
 			children = (
-				EC79BBF81F46779F0058BF77 /* HZQRCodeResource.bundle */,
-				EC79BBF91F46779F0058BF77 /* HZQRCodeTool.swift */,
+				EC79BBFD1F4678FC0058BF77 /* HZQRCodeResource.bundle */,
+				EC79BBFE1F4678FC0058BF77 /* HZQRCodeTool.swift */,
 			);
 			path = HZQRCodeTool;
 			sourceTree = "<group>";
@@ -75,7 +75,7 @@
 		EC7FDDBE1F4186B8007F472C /* QR-code */ = {
 			isa = PBXGroup;
 			children = (
-				EC79BBF71F46779F0058BF77 /* HZQRCodeTool */,
+				EC79BBFC1F4678FC0058BF77 /* HZQRCodeTool */,
 				EC7FDDD11F4186CD007F472C /* Classes */,
 				EC7FDDC31F4186B8007F472C /* Main.storyboard */,
 				EC7FDDC61F4186B8007F472C /* Assets.xcassets */,
@@ -273,7 +273,7 @@
 				EC7FDDCA1F4186B8007F472C /* LaunchScreen.storyboard in Resources */,
 				EC7FDDC71F4186B8007F472C /* Assets.xcassets in Resources */,
 				EC7FDDC51F4186B8007F472C /* Main.storyboard in Resources */,
-				EC79BBFA1F46779F0058BF77 /* HZQRCodeResource.bundle in Resources */,
+				EC79BBFF1F4678FC0058BF77 /* HZQRCodeResource.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,7 +288,7 @@
 				EC7FDDE81F4186CD007F472C /* DistinguishQRCodeVc.swift in Sources */,
 				EC7FDDE91F4186CD007F472C /* AppDelegate.swift in Sources */,
 				EC7FDDEC1F4186CD007F472C /* ViewController.swift in Sources */,
-				EC79BBFB1F46779F0058BF77 /* HZQRCodeTool.swift in Sources */,
+				EC79BC001F4678FC0058BF77 /* HZQRCodeTool.swift in Sources */,
 				ECCBE6471F428E7B00A21C98 /* GeneratorQRCodeVc.swift in Sources */,
 				EC7FDDEA1F4186CD007F472C /* CommonKeys.swift in Sources */,
 			);
