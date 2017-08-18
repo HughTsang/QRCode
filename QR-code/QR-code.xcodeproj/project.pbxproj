@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC79BBFA1F46779F0058BF77 /* HZQRCodeResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EC79BBF81F46779F0058BF77 /* HZQRCodeResource.bundle */; };
+		EC79BBFB1F46779F0058BF77 /* HZQRCodeTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC79BBF91F46779F0058BF77 /* HZQRCodeTool.swift */; };
 		EC7FDDC51F4186B8007F472C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7FDDC31F4186B8007F472C /* Main.storyboard */; };
 		EC7FDDC71F4186B8007F472C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC7FDDC61F4186B8007F472C /* Assets.xcassets */; };
 		EC7FDDCA1F4186B8007F472C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7FDDC81F4186B8007F472C /* LaunchScreen.storyboard */; };
@@ -15,12 +17,12 @@
 		EC7FDDEA1F4186CD007F472C /* CommonKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7FDDDF1F4186CD007F472C /* CommonKeys.swift */; };
 		EC7FDDEC1F4186CD007F472C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7FDDE11F4186CD007F472C /* ViewController.swift */; };
 		EC7FDDED1F4186CD007F472C /* ScanningQRCodeVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7FDDE41F4186CD007F472C /* ScanningQRCodeVc.swift */; };
-		EC8F697C1F456C100039111D /* HZQRCodeTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8F69781F456C100039111D /* HZQRCodeTool.swift */; };
-		EC8F69AB1F4573710039111D /* HZQRCodeResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EC8F69AA1F4570350039111D /* HZQRCodeResource.bundle */; };
 		ECCBE6471F428E7B00A21C98 /* GeneratorQRCodeVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCBE6461F428E7A00A21C98 /* GeneratorQRCodeVc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EC79BBF81F46779F0058BF77 /* HZQRCodeResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HZQRCodeResource.bundle; sourceTree = "<group>"; };
+		EC79BBF91F46779F0058BF77 /* HZQRCodeTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HZQRCodeTool.swift; sourceTree = "<group>"; };
 		EC7FDDBC1F4186B8007F472C /* QR-code.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "QR-code.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC7FDDC41F4186B8007F472C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EC7FDDC61F4186B8007F472C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -31,8 +33,6 @@
 		EC7FDDE01F4186CD007F472C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC7FDDE11F4186CD007F472C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EC7FDDE41F4186CD007F472C /* ScanningQRCodeVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanningQRCodeVc.swift; sourceTree = "<group>"; };
-		EC8F69781F456C100039111D /* HZQRCodeTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HZQRCodeTool.swift; sourceTree = "<group>"; };
-		EC8F69AA1F4570350039111D /* HZQRCodeResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HZQRCodeResource.bundle; sourceTree = "<group>"; };
 		ECCBE6461F428E7A00A21C98 /* GeneratorQRCodeVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratorQRCodeVc.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -47,6 +47,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EC79BBF71F46779F0058BF77 /* HZQRCodeTool */ = {
+			isa = PBXGroup;
+			children = (
+				EC79BBF81F46779F0058BF77 /* HZQRCodeResource.bundle */,
+				EC79BBF91F46779F0058BF77 /* HZQRCodeTool.swift */,
+			);
+			path = HZQRCodeTool;
+			sourceTree = "<group>";
+		};
 		EC7FDDB31F4186B8007F472C = {
 			isa = PBXGroup;
 			children = (
@@ -66,7 +75,7 @@
 		EC7FDDBE1F4186B8007F472C /* QR-code */ = {
 			isa = PBXGroup;
 			children = (
-				EC8F69731F456C100039111D /* HZQRCodeTool */,
+				EC79BBF71F46779F0058BF77 /* HZQRCodeTool */,
 				EC7FDDD11F4186CD007F472C /* Classes */,
 				EC7FDDC31F4186B8007F472C /* Main.storyboard */,
 				EC7FDDC61F4186B8007F472C /* Assets.xcassets */,
@@ -169,15 +178,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		EC8F69731F456C100039111D /* HZQRCodeTool */ = {
-			isa = PBXGroup;
-			children = (
-				EC8F69AA1F4570350039111D /* HZQRCodeResource.bundle */,
-				EC8F69781F456C100039111D /* HZQRCodeTool.swift */,
-			);
-			path = HZQRCodeTool;
-			sourceTree = "<group>";
-		};
 		ECCBE6421F428E5000A21C98 /* Generator */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,7 +273,7 @@
 				EC7FDDCA1F4186B8007F472C /* LaunchScreen.storyboard in Resources */,
 				EC7FDDC71F4186B8007F472C /* Assets.xcassets in Resources */,
 				EC7FDDC51F4186B8007F472C /* Main.storyboard in Resources */,
-				EC8F69AB1F4573710039111D /* HZQRCodeResource.bundle in Resources */,
+				EC79BBFA1F46779F0058BF77 /* HZQRCodeResource.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,9 +288,9 @@
 				EC7FDDE81F4186CD007F472C /* DistinguishQRCodeVc.swift in Sources */,
 				EC7FDDE91F4186CD007F472C /* AppDelegate.swift in Sources */,
 				EC7FDDEC1F4186CD007F472C /* ViewController.swift in Sources */,
+				EC79BBFB1F46779F0058BF77 /* HZQRCodeTool.swift in Sources */,
 				ECCBE6471F428E7B00A21C98 /* GeneratorQRCodeVc.swift in Sources */,
 				EC7FDDEA1F4186CD007F472C /* CommonKeys.swift in Sources */,
-				EC8F697C1F456C100039111D /* HZQRCodeTool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
