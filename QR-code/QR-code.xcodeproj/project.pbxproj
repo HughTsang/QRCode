@@ -243,6 +243,7 @@
 					EC7FDDBB1F4186B8007F472C = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 6MDXT5Z7P3;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -420,7 +421,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xxx.QR-code";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -435,7 +437,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xxx.QR-code";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

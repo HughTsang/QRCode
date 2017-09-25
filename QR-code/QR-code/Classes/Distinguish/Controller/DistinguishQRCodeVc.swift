@@ -40,15 +40,15 @@ extension DistinguishQRCodeVc {
         let tap = UITapGestureRecognizer(target: self, action: #selector(DistinguishQRCodeVc.chooseImage))
         sourceIv.addGestureRecognizer(tap)
         
-        outputIv.frame = CGRect(x: (kScreenW - 200) * 0.5, y: sourceIv.frame.maxY + 20, width: 200, height: 200)
-        
-        distinguishBtn.frame = CGRect(x: kScreenW - 100, y: kNavBarHeight + 20, width: 80, height: 30)
+        distinguishBtn.frame = CGRect(x: 20, y: sourceIv.frame.maxY + 5, width: view.frame.width - 40, height: 30)
         distinguishBtn.setTitle("开始识别", for: .normal)
-        distinguishBtn.addTarget(self, action: #selector(DistinguishQRCodeVc.distinguishBtnClicked), for: .touchUpInside)
+        distinguishBtn.addTarget(self, action: #selector(self.distinguishBtnClicked), for: .touchUpInside)
+        
+        outputIv.frame = CGRect(x: (kScreenW - 200) * 0.5, y: distinguishBtn.frame.maxY + 5, width: 200, height: 200)
         
         view.addSubview(sourceIv)
-        view.addSubview(outputIv)
         view.addSubview(distinguishBtn)
+        view.addSubview(outputIv)
     }
 }
 
@@ -145,7 +145,7 @@ extension DistinguishQRCodeVc {
     /// - Returns: 有权限返回true，没权限返回false
     private func cameraPermissions() -> Bool{
         
-        let authStatus: AVAuthorizationStatus =  AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+        let authStatus: AVAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         
         if authStatus == .denied || authStatus == .restricted {
             return false

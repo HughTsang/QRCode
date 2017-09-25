@@ -6,21 +6,15 @@
 //  二维码扫描
 
 import UIKit
-import AVFoundation
 
 class ScanningQRCodeVc: UIViewController {
-
+    
+    let qrCodeTool: HZQRCodeTool = HZQRCodeTool()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        HZQRCodeTool.shared.endScan()
-    }
-
 }
 
 // MARK: - 设置UI界面
@@ -30,15 +24,15 @@ extension ScanningQRCodeVc {
         automaticallyAdjustsScrollViewInsets = false
         view.backgroundColor = .white
         navigationItem.title = "轻点屏幕 开始扫描"
-    
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
+        
         // 开启摄像头扫描
         startScanning()
     }
-
+    
 }
 
 // MARK: - 开始扫描
@@ -46,8 +40,8 @@ extension ScanningQRCodeVc {
     
     fileprivate func startScanning() {
 
-        HZQRCodeTool.shared.startScan(inView: view,
-                                    isDrawCodeFrameFlag: true)
+        qrCodeTool.startScan(inView: view,
+                                      isDrawCodeFrameFlag: true)
         { [weak self] (resultStrs) in
             
             var resultMessage = resultStrs.description
@@ -61,8 +55,6 @@ extension ScanningQRCodeVc {
             alert.addAction(action)
             self?.present(alert, animated: true, completion: nil)
         }
-        
     }
     
 }
-

@@ -28,6 +28,9 @@ class ViewController: UIViewController {
         
         automaticallyAdjustsScrollViewInsets = false
         view.backgroundColor = UIColor.white
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+        }
         
         view.addSubview(table)
     }

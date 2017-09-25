@@ -12,54 +12,16 @@ typealias ScanResultBlock = ([String]) -> ()
 fileprivate let borderImageName: String = "icon_qrcode_border"  // 扫描框 边框图片
 fileprivate let scanLineImageName: String = "icon_qrcode_scanline_qrcode"// 扫描框 扫描冲击波图片
 
-class HZQRCodeTool: NSObject {
+@objc class HZQRCodeTool: NSObject {
     
     /// 单例
     static let shared = HZQRCodeTool()
     
     // MARK: - 属性
-    /// 懒加载输入对象
-    fileprivate lazy var input: AVCaptureInput? = {
-        // 1.获取摄像头设备
-        let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
-        
-        // 2.把摄像头设备当做输入设备
-        guard let input = try? AVCaptureDeviceInput(device: device) else {
-            print("没有摄像头或摄像头不可用!")
-            return nil
-        }
-        return input
-    }()
-    /// 输出
-    fileprivate lazy var output: AVCaptureMetadataOutput? = {
-        let output = AVCaptureMetadataOutput()
-        // 设置结果处理的代理
-        output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-        
-        return output
-    }()
     /// 会话
-    fileprivate var session: AVCaptureSession = {
-        let session = AVCaptureSession()
-        // 如果二维码特别小, 需要设置该属性, 这个决定了视频输入每一帧图像质量的大小
-        /*
-         AVCaptureSessionPreset320x240
-         AVCaptureSessionPreset352x288
-         AVCaptureSessionPreset640x480
-         AVCaptureSessionPreset960x540
-         AVCaptureSessionPreset1280x720
-         AVCaptureSessionPreset1920x1080
-         */
-        session.sessionPreset = "AVCaptureSessionPreset1920x1080"
-        return session
-    }()
+    fileprivate var session: AVCaptureSession = AVCaptureSession()
     /// 预览图层
-    fileprivate lazy var layer: AVCaptureVideoPreviewLayer = {
-        guard let layer = AVCaptureVideoPreviewLayer(session: self.session) else {
-            return AVCaptureVideoPreviewLayer()
-        }
-        return layer
-    }()
+    fileprivate lazy var previewLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: self.session)
     /// 是否绘制边框的标记
     fileprivate var isDrawCodeFrameFlag: Bool = false
     /// 扫描结果闭包
@@ -93,6 +55,9 @@ class HZQRCodeTool: NSObject {
         return imageView
     }()
 
+    deinit {
+        endScan()
+    }
 }
 
 // MARK: - 对外提供方法
@@ -135,7 +100,7 @@ extension HZQRCodeTool {
         
         // 3.1.图片处理
         let transform = CGAffineTransform.init(scaleX: 20, y: 20)
-        image = image.applying(transform)
+        image = image.transformed(by: transform)
         
         var resultImage = UIImage(ciImage: image)
         
@@ -218,34 +183,51 @@ extension HZQRCodeTool {
         self.isDrawCodeFrameFlag = isDrawCodeFrameFlag
         
         // 2.创建会话, 连接输入和输出
-        if session.canAddInput(input) && session.canAddOutput(output) {
-            session.addInput(input)
-            session.addOutput(output)
+        session = AVCaptureSession()
+        // 如果二维码特别小, 需要设置该属性, 这个决定了视频输入每一帧图像质量的大小
+        session.sessionPreset = AVCaptureSession.Preset.high
+        
+        // 3.连接输入和输出
+        guard
+            let videoCaptureDevice = AVCaptureDevice.default(for: .video) else {
+                return
+        }
+        guard
+            let videoInput = try? AVCaptureDeviceInput(device: videoCaptureDevice) else {
+                print("没有输入")
+                return
+        }
+        
+        if session.canAddInput(videoInput) {
+            session.addInput(videoInput)
         } else {
+            print("不能添加输入")
             return
         }
         
-        // 3.设置二维码可以识别的码制 (设置识别的类型, 必须在输出添加到会话之后才可以设置,否则奔溃)
-        output?.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
+        let metadataOutput = AVCaptureMetadataOutput()
+        if session.canAddOutput(metadataOutput) {
+            session.addOutput(metadataOutput)
+            metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+            // 3.1.设置二维码可以识别的码制 (设置识别的类型, 必须在输出添加到会话之后才可以设置,否则奔溃)
+            metadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
+        } else {
+            print("没有输出")
+            return
+        }
         
         // 4.设置扫描的 兴趣区域(可不设置,默认全部区域可识别)
         // 如需设置,调用 setRectOfInterest(originRect:) 方法
         if isSpecifyZoneIdentificationFlag == true {
-            setRectOfInterest(originRect: scanBackIv.frame)
+            setRectOfInterest(scanBackIv.frame, metadataOutput)
         }
         
         // 5.添加视频预览图层(让用户可以看到界面, 不是必须添加的)
-        if inView.layer.sublayers == nil {
-            layer.frame = inView.layer.bounds
-            inView.layer.insertSublayer(layer, at: 0)
-        } else {
-            let subLayers = inView.layer.sublayers!
-            if !subLayers.contains(layer) {
-                layer.frame = inView.layer.bounds
-                inView.layer.insertSublayer(layer, at: 0)
-            }
-        }
-        
+        previewLayer = AVCaptureVideoPreviewLayer(session: session)
+        previewLayer.frame = inView.layer.bounds
+        previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        inView.layer.addSublayer(previewLayer)
+
         // 6.启动会话, 让输入开始采集数据, 输出对象 开始处理数据
         session.startRunning()
         
@@ -259,8 +241,10 @@ extension HZQRCodeTool {
         session.stopRunning()
         
         // 移除输入和输出
-        session.removeInput(input)
-        session.removeOutput(output)
+        if let input = session.inputs.first, let output = session.outputs.first {
+            session.removeInput(input)
+            session.removeOutput(output)
+        }
         
         // 恢复默认
         isDrawCodeFrameFlag = false
@@ -336,7 +320,7 @@ extension HZQRCodeTool {
     }
     
     /// 设置扫描的 兴趣区域(识别区域), 不设置则是全部区域扫描
-    fileprivate func setRectOfInterest(originRect: CGRect) {
+    fileprivate func setRectOfInterest(_ originRect: CGRect, _ output: AVCaptureMetadataOutput) {
         
         // 设置扫描的 兴趣区域
         // 注意, 此处需要填的rect, 是以右上角为(0, 0), 也就是横屏状态
@@ -346,7 +330,7 @@ extension HZQRCodeTool {
         let y: CGFloat = originRect.minY / bounds.height
         let width: CGFloat = originRect.width / bounds.width
         let height: CGFloat = originRect.height / bounds.height
-        output?.rectOfInterest = CGRect(x: y, y: x, width: height, height: width)
+        output.rectOfInterest = CGRect(x: y, y: x, width: height, height: width)
     }
     
     fileprivate func getImageFromBundle(imageName: String) -> UIImage? {
@@ -420,10 +404,10 @@ extension HZQRCodeTool {
 
 // MARK: - 二维码扫描扩展类 AVCaptureMetadataOutputObjectsDelegate
 extension HZQRCodeTool: AVCaptureMetadataOutputObjectsDelegate {
-    
+
     // 当元数据输出对象, 识别处理好数据之后, 就会调用这个方法
-    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
-        
+    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+
         if isDrawCodeFrameFlag == true {
             removeFrameLayer()
         }
@@ -432,87 +416,80 @@ extension HZQRCodeTool: AVCaptureMetadataOutputObjectsDelegate {
         // 遍历识别到的元数据信息
         for obj in metadataObjects {
             if (obj as AnyObject).isKind(of: AVMetadataMachineReadableCodeObject.self) {
-                
+
                 // 1.将扫描到二维码的坐标转换为我们能够识别的坐标
-                let reusltObj = layer.transformedMetadataObject(for: obj as! AVMetadataObject)
+                let reusltObj = previewLayer.transformedMetadataObject(for: obj )
                 let qrCodeObj = reusltObj as! AVMetadataMachineReadableCodeObject
-                
+
 //                print(qrCodeObj.stringValue)
 //                print(qrCodeObj.corners)
-                
+
                 // 2. 根据元数据对象, 绘制二维码边框
                 if isDrawCodeFrameFlag == true {
                     drawFrame(qrCodeObj)
                 }
-                
+
                 // 3. 获取结果
-                resultStrs.append(qrCodeObj.stringValue)
+                resultStrs.append(qrCodeObj.stringValue!)
             }
         }
-        
+
         // 执行回调代码块
         scanResultBlock?(resultStrs)
-        
+
         // 结束扫描
         endScan()
     }
-    
+
     /// 添加识别框, 如果识别到多个, 则添加多个识别框
     fileprivate func drawFrame(_ qrCodeObj: AVMetadataMachineReadableCodeObject) {
-        
-        guard let corners = qrCodeObj.corners else {
-            return
-        }
-        
+
+        let corners = qrCodeObj.corners
+
         // 1.借助一个图形层来绘制
         let shapeLayer = CAShapeLayer()
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.strokeColor = UIColor.red.cgColor
         shapeLayer.lineWidth = 5
-        
+
         // 2.根据四个点,创建一个路径
         let path = UIBezierPath()
         var index = 0
         for corner in corners {
             // qrCodeObj.corners 代表二维码的四个角, 但是,需要借助视频预览图层,转换成为我们需要的可以用的坐标
-            let pointDict = corner as! CFDictionary
-            guard let point = CGPoint.init(dictionaryRepresentation: pointDict) else {
-                continue
-            }
-            
             // 第一个点
             if index == 0 {
-                path.move(to: point)
+                path.move(to: corner)
             } else {
-                path.addLine(to: point)
+                path.addLine(to: corner)
             }
-            
+
             index += 1
         }
         path.close()
-        
+
         // 3.给图形图层的路径赋值,代表图层展示怎样的形状
         shapeLayer.path = path.cgPath
-        
+
         // 4.直接添加图形图层到需要展示的图层
-        layer.addSublayer(shapeLayer)
+        previewLayer.addSublayer(shapeLayer)
     }
-    
+
     /// 移除识别框
     fileprivate func removeFrameLayer() {
-        
+
         guard
-            let subLayers = layer.sublayers
+            let subLayers = previewLayer.sublayers
             else {
             return
         }
-        
+
         for subLayer in subLayers {
-            
+
             if subLayer.isKind(of: CAShapeLayer.self) {
                 subLayer.removeFromSuperlayer()
             }
         }
     }
-    
+
 }

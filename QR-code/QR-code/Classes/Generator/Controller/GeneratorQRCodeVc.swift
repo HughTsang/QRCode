@@ -38,12 +38,12 @@ extension GeneratorQRCodeVc {
         qrCodeIv.frame = CGRect(x: (kScreenW - 150) * 0.5, y: 120, width: 150, height: 150)
         qrCodeIv.backgroundColor = .cyan
         
-        inputTv.frame = CGRect(x: (kScreenW - 150) * 0.5, y: qrCodeIv.frame.maxY + 20, width: 150, height: 100)
-        inputTv.backgroundColor = .cyan
-        
-        buildBtn.frame = CGRect(x: kScreenW - 100, y: kNavBarHeight + 20, width: 80, height: 30)
+        buildBtn.frame = CGRect(x: 20, y: qrCodeIv.frame.maxY + 5, width: view.frame.width - 40, height: 30)
         buildBtn.setTitle("立即生成", for: .normal)
         buildBtn.addTarget(self, action: #selector(GeneratorQRCodeVc.buildBtnClicked), for: .touchUpInside)
+        
+        inputTv.frame = CGRect(x: (kScreenW - 150) * 0.5, y: buildBtn.frame.maxY + 5, width: 150, height: 100)
+        inputTv.backgroundColor = .cyan
         
         view.addSubview(qrCodeIv)
         view.addSubview(inputTv)
